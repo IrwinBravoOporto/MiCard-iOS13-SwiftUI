@@ -8,31 +8,58 @@
 
 import SwiftUI
 
+//struct InfoView: View {
+//    let description: String
+//
+//    var body: some View {
+//        HStack {
+//            Image(systemName: "checkmark.circle.fill")
+//                .foregroundColor(Color("Info Color"))
+//                .font(.system(size: 22))
+//            Text(description)
+//                .font(.system(size: 20))
+//                .foregroundColor(.black)
+//                .padding(.leading, 10)
+//        }
+//        .padding(.vertical, 10)
+//        .background(Color.white)
+//        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+//        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
+//            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+//        )
+//    }
+//}
+
 struct InfoView: View {
-    let text: String
-    let imageName: String
-    
+    let description: String
+ 
     var body: some View {
-        RoundedRectangle(cornerRadius: 25)
+ 
+        RoundedRectangle(cornerRadius: 15)
             .fill(Color.white)
             .frame(height: 50)
-            .overlay(HStack {
-                Image(systemName: imageName)
-                    .foregroundColor(.green)
-                Text(text)
-                //This line below is required if you want the app to display correctly in dark mode.
-                    //In dark mode all Text is automatically rendered as white.
-                    //So we've created a custom color in the assets folder called Infor Color and used it here. 
-                .foregroundColor(Color("Info Color"))
-            })
-            .padding(.all)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical)
+            .overlay(
+                
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(Color("Info Color"))
+                        .font(.system(size: 22))
+                    Text(description)
+                        .font(.system(size: 20))
+                        .foregroundColor(.black)
+                        .padding(.leading, 10)
+                }
+            ).overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 0))
     }
 }
 
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView(text: "Hello", imageName: "phone.fill")
+        InfoView(description: "Location:" )
             .previewLayout(.sizeThatFits)
     }
 }
+
